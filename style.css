@@ -39,7 +39,7 @@ body{
 }
 
 .front{
-    background: url("img/0.jpg");
+/*    background: url("img/0.jpg");*/
     transform: rotate(-180deg);
 }
 .front.flipped{
