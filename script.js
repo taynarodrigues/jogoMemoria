@@ -65,8 +65,11 @@
             var faces = this.getElementsByClassName("face");
 
             console.log(faces[0].classList.length);
-                         
-               /*console.log(faces[0]);*/
+
+            if(faces[0].classList.length > 2){//aborta a execução dos métodos-> nõa chega a virar as imagens
+                return;    
+            }
+            /*console.log(faces[0]);*/
             faces[0].classList.toggle("flipped");
             faces[1].classList.toggle("flipped");
             /*console.log(faces[0].classList);*/
@@ -78,7 +81,7 @@
             flippedCards[0].childNodes[1].classList.toggle("flipped");
             flippedCards[0].childNodes[3].classList.toggle("flipped");
             flippedCards[1].childNodes[1].classList.toggle("flipped");
-            flippedCards[1].childNodes[3].classList.toggle("flipped");
+            flipCards[1].childNodes[3].classList.toggle("flipped");
 
             flippedCards = [];
         }
