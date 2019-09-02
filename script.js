@@ -1,9 +1,14 @@
 (function(){
+  //vai contabilizar os acertos
+  var matches = 0;
+
     var imagens = [];
 
     var flippedCards = [];
 
     var modalGameOver = document.querySelector("#modalGameOver");
+
+    var imgMatchSign = document.querySelector("#imgMatchSign");
 
     for(var i = 0; i < 16; i++){
         var img = {
@@ -77,10 +82,27 @@
             /*console.log(faces[0]);*/
             faces[0].classList.toggle("flipped");
             faces[1].classList.toggle("flipped");
-            /*console.log(faces[0].classList);*/
-
-    
+            /*console.log(faces[0].classList);*/    
             flippedCards.push(this);
+            if(flippedCards.length === 2){
+                if(flipCard[0].childNodes[3].id === flippedCards[1].childNodes[3].id){
+                    flippedCards[0].childNodes[1].classList.toggle("match");
+                    flippedCards[0].childNodes[3].classList.toggle("match");
+                    flippedCards[1].childNodes[1].classList.toggle("match");
+                    flippedCards[1].childNodes[3].classList.toggle("match");
+                    
+                    matchCardSingn();
+
+                    matches++;
+
+                    flippedCards = [];
+
+                    if(matches === 8){
+                        gameOver();
+                    }
+                }
+            }
+
         }else{
             console.log(flippedCards);
             flippedCards[0].childNodes[1].classList.toggle("flipped");
@@ -91,13 +113,23 @@
             flippedCards = [];
         }
     }
-    window.setTimeout(function(){
+ /*   window.setTimeout(function(){
         gameOver();
     },1000);
-
+*/
     function gameOver(){
         modalGameOver.style.zIndex = 10;
         modalGameOver.addEventListener("click", startGame,false);
+    }
+    function matchCardSingn(){
+        imgMatchSign.style.zIndex = 1;
+        imgMatchSign.style.top = 150 + "px";
+        imgMatchSign.style.opacity = 0;
+    setTimeout(function(){
+        imgMatchSign.style.zIndex = -1;
+        imgMatchSign.style.top = 250 + "px";
+        imgMatchSign.style.opacity = 1;
+    },1500);
     }
 
 }());
