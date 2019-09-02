@@ -28,7 +28,8 @@
 
         matches = 0;
 
-        imagens = randomSort(imagens);  //organização aleatória
+        	//embaralhamento do array de imagens
+        imagens = randomSort(imagens); 
 
         var frontFaces = document.getElementsByClassName("front");
         var backFaces = document.getElementsByClassName("back");
@@ -40,11 +41,11 @@
             var card = document.querySelector("#card" + i);
             console.log(i % 8);
 
+            //posiciona as cartas no tabuleiro
             card.style.left = (i % 8) === 0 ? 5 + "px" : 5 + ((i % 8) * 165) + "px";
             card.style.top = i / 8 >= 1 ? 250 + "px" : 5 + "px";
 
-            //Atribuir evento do movimento das figuras
-
+            //adiciona às cartas o evento click chamando a função que vira as cartas
             card.addEventListener("click", flipCard, false);
 
             frontFaces[i].style.background = "url('" + imagens[i].src + "')";
