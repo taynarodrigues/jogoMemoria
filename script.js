@@ -8,7 +8,7 @@
 
     var modalGameOver = document.querySelector("#modalGameOver");
 
-    var imgMatchSign = document.querySelector("#imgMatchSign");
+    var imgMatchSing = document.querySelector("#imgMatchSing");
 
     for (var i = 0; i < 16; i++) {
         var img = {
@@ -74,12 +74,13 @@
             flippedCards.push(this);
             if (flippedCards.length === 2) {
                 if (flippedCards[0].childNodes[3].id === flippedCards[1].childNodes[3].id) {
+                    
                     flippedCards[0].childNodes[1].classList.toggle("match");
                     flippedCards[0].childNodes[3].classList.toggle("match");
                     flippedCards[1].childNodes[1].classList.toggle("match");
                     flippedCards[1].childNodes[3].classList.toggle("match");
 
-                    matchCardSign();
+                    matchCardSing();
 
                     flippedCards = [];
 
@@ -126,19 +127,19 @@
     }
 
 
-    function matchCardSign() {
-        imgMatchSign.style.zIndex = "1";
-        imgMatchSign.style.top = 150 + "px";
-        imgMatchSign.style.opacity = "0";
+    function matchCardSing() {
+        imgMatchSing.style.zIndex = "1";
+        imgMatchSing.style.top = 150 + "px";
+        imgMatchSing.style.opacity = "0";
         setTimeout(function () {
-            imgMatchSign.style.zIndex = "-1";
-            imgMatchSign.style.top = 250 + "px";
-            imgMatchSign.style.opacity = "1";
+            imgMatchSing.style.zIndex = "-1";
+            imgMatchSing.style.top = 250 + "px";
+            imgMatchSing.style.opacity = "1";
         }, 1500);
     }
     function gameOver() {
         modalGameOver.style.zIndex = "99";
-        modalGameOver.addEventListener("click", function () {
+        modalGameOver.addEventListener('click', function () {
             startGame();
         }, false);
     }
