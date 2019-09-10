@@ -1,2 +1,0 @@
-# jogoMemoria
-Jogo da Memória
