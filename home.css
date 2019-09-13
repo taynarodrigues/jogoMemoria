@@ -20,7 +20,7 @@ body{
     color: #000;
 }
 .saudacao em {
-    color: #1fb9b9;
+    color:#851944;
     font-size: 4em;
     -webkit-transform: rotate(-5deg) skew(-10deg);
             transform: rotate(-5deg) skew(-10deg);
@@ -37,7 +37,7 @@ body{
 }
 .botao-index {
     font-size: 1.25em;
-    background-color: #1fb9b9;
+    background-color:#851944;
     color: #FFF;
     padding: .5em;
     border: .2em solid black;
@@ -50,7 +50,7 @@ body{
 }
 .botao-index:focus,
 .botao-index:hover {
-    background-color: #168b8b;
+    background-color:#851944;
     color: white;
     box-shadow: 0 0 1em #FA9;
 }
@@ -143,6 +143,23 @@ body{
             transform-style: preserve-3d;
     position: relative;
 }
+footer {
+    background-color: #000;
+    color: #FFF;
+    padding: 2em;
+}
+footer h2 {
+    font-size: 3em;
+}
+footer a {
+    color: #F99;
+}
+main {
+    width: 100%;
+    padding-bottom: 0;
+    float: none;
+}
+
 @-webkit-keyframes aparece {
     from {
         opacity: 0;
