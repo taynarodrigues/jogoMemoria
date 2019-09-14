@@ -6,7 +6,7 @@ joguinho da memória
 
 
 
-[1]:https://taynarodrigues.github.io/jogoMemoria/
+[1]:https://taynarodrigues.github.io/jogoMemoria/home.html
 
 ## INFO
 Info : [Clique aqui](https://taynarodrigues.github.io/jogoMemoria/ "Clique aqui")
