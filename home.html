@@ -1,49 +1,85 @@
-<!DOCTYPE html>
-<html lang="pt">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <title>Tayna Rodrigues - Desenvolvedor Web</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="site.css">
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Shadows+Into+Light">
+    <title>Jogo da Memória</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<header class="titulo-principal">
-    <img class="foto-home" src="img/eu.jpg" alt="jovens down">
-    <h1>Jogo da Memória</h1>
-    <p class="subtitulo-principal">jogo da memória</p>
-    <ul class="palavras-home">
-        <li class="palavra-home primeira">Alegria</li>
-        <li class="palavra-home segunda">Feliz</li>
-        <li class="palavra-home terceira">Sorte</li>
-        <li class="palavra-home quarta">Diversão</li>
-        <li class="palavra-home quinta">Emoção</li>
-        <li class="palavra-home sexta">Brincando</li>
-        <li class="palavra-home setima">Educativo</li>
-        <li class="palavra-home oitava">Engraçado</li>
-        <li class="palavra-home nona">Entretenimento</li>
-        <li class="palavra-home decima">Animação</li>
-        <li class="palavra-home decima-primeira">Aflição</li>
-    </ul>
-    <a class="banner" href="http://github.com/taynarodrigues">Siga-me no Github</a>
-</header>
 
 <body>
-    <main>
-        <section class="secao-inicio saudacao">
-            <p class="saudacao"><span class="saudacao-inicio">Olá,</span> vamos <strong>Jogar ?</strong> <span
-                    class="saudacao-ultima-linha">um joguinho da <em>Memória bem divertido</em></span></p>
-            <a class="botao-index" href="index.html">Fácil</a>
-            <a class="botao-index" href="index.html">Médio</a>
-            <a class="botao-index" href="index.html">Difícil</a>
-        </section>
-    </main>
-    <footer class="rodape-pagina">
-        &copy; Tayna Rodrigues 2019
-    </footer>
-</body>
+    <div id="container">
+        <div class="card" id="card0">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card1">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card2">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card3">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card4">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card5">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card6">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card7">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card8">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card9">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card10">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card11">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card12">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card13">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card14">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <div class="card" id="card15">
+            <div class="face back"></div>
+            <div class="face front"></div>
+        </div>
+        <img src="img/match.png" id="imgMatchSing" />
 
+        <div id="modalGameOver">
+            <img src="img/gameover.png" id="imgGameOver"/>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
