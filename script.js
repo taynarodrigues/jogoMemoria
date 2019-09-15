@@ -1,5 +1,7 @@
 (function () {
 
+    var txtScore = document.querySelector('#score');
+    var score = 0;
     //variáveis que controlarar os aúdios
     var somAcerto = document.createElement('audio');
     somAcerto.src = 'somAcerto.mp3';
@@ -37,6 +39,8 @@
     //chama a função de inicialização do jogo
     startGame();
 
+    score = 0;
+    txtScore.innerHTML = 'SCORE: ' + score;
     //função de inicialização do jogo
     function startGame() {
 
@@ -118,7 +122,6 @@
                     //o som será executado quando o jogador acertar uma combinação
                      somAcerto.play();
 
-
                     //em caso de acerto adiciona a classe match a todas as faces das duas cartas presente no array de cartas viradas
                     flippedCards[0].childNodes[1].classList.toggle("match");
                     flippedCards[0].childNodes[3].classList.toggle("match");
@@ -133,6 +136,9 @@
 
                     //soma um ao contador de acertos
                     matches++;
+
+                    score++;
+                    txtScore.innerHTML = 'SCORE: ' + score;
 
                     //verifica se o contador de acertos chegou a 8
                     if (matches >= 8) {
