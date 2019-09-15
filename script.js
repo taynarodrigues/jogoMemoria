@@ -1,7 +1,11 @@
 (function () {
 
+    //variável que armazena a referência ao elemento HTML, que irá exibi-la
     var txtScore = document.querySelector('#score');
+
+    //variável para armazenar pontuação na memória e será atualizada a cada acerto do jogador
     var score = 0;
+
     //variáveis que controlarar os aúdios
     var somAcerto = document.createElement('audio');
     somAcerto.src = 'somAcerto.mp3';
@@ -39,8 +43,10 @@
     //chama a função de inicialização do jogo
     startGame();
 
+    //os seguintes comandos fará com que o placar seja zerado e exibido sempre que iniciarmos uma partida
     score = 0;
     txtScore.innerHTML = 'SCORE: ' + score;
+
     //função de inicialização do jogo
     function startGame() {
 
@@ -137,6 +143,7 @@
                     //soma um ao contador de acertos
                     matches++;
 
+                    //os seguintes comandos irá somar um ponto ao placar e exibirá na tela a pontuação atualizada
                     score++;
                     txtScore.innerHTML = 'SCORE: ' + score;
 
