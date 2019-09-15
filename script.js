@@ -45,7 +45,7 @@
 
     //os seguintes comandos fará com que o placar seja zerado e exibido sempre que iniciarmos uma partida
     score = 0;
-    txtScore.innerHTML = 'SCORE: ' + score;
+    txtScore.innerHTML = 'PONTOS: ' + score;
 
     //função de inicialização do jogo
     function startGame() {
@@ -145,7 +145,7 @@
 
                     //os seguintes comandos irá somar um ponto ao placar e exibirá na tela a pontuação atualizada
                     score++;
-                    txtScore.innerHTML = 'SCORE: ' + score;
+                    txtScore.innerHTML = 'PONTOS: ' + score;
 
                     //verifica se o contador de acertos chegou a 8
                     if (matches >= 8) {
