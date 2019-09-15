@@ -1,5 +1,10 @@
 (function () {
 
+    var somAcerto = document.createElement('audio');
+    somAcerto.src = 'somAcerto.mp3';
+     var somErro = document.createElement('audio');
+    somErro.src = 'somErro.mp3';
+
     var imagens = [];
 
     var flippedCards = [];
@@ -58,55 +63,69 @@
     }
 
     function flipCard() {
+        //verifica se o número de cartas viradas é menor que 2
         if (flippedCards.length < 2) {
+            //pega as faces da carta clicada
             var faces = this.getElementsByClassName("face");
 
-            console.log(faces[0].classList.length);
+            // console.log(faces[0].classList.length);
 
-            //aborta a execução dos métodos-> nõa chega a virar as imagens
+            //confere se a carta já está virada, impedindo que a mesma carta seja virada duas vezes
             if (faces[0].classList[2]) {
                 return;
             }
             /*console.log(faces[0]);*/
+            //adiciona a classe fliped às faces da carta para que sejam virada
             faces[0].classList.toggle("flipped");
             faces[1].classList.toggle("flipped");
             /*console.log(faces[0].classList);*/
+            //adiciona a carta ao array de cartas viradas
             flippedCards.push(this);
+
+            //verifica se o número de cartas no array de cartas virada é igual a 2
             if (flippedCards.length === 2) {
+
+                //compara o id das cartas viradas para ver se houve um acerto
                 if (flippedCards[0].childNodes[3].id === flippedCards[1].childNodes[3].id) {
-                    
+
+                    somAcerto.play();
+                    //em caso de acerto adiciona a classe match a todas as faces das duas cartas presente no array de cartas viradas
                     flippedCards[0].childNodes[1].classList.toggle("match");
                     flippedCards[0].childNodes[3].classList.toggle("match");
                     flippedCards[1].childNodes[1].classList.toggle("match");
                     flippedCards[1].childNodes[3].classList.toggle("match");
 
+                    //chama a função que exibe a mensagem MATCH
                     matchCardSing();
-
+                    //limpa o array de cartas viradas
                     flippedCards = [];
-
+                    //soma um ao contador de aceros
                     matches++;
-
+                    //verifica se o contador de acertos chegou a 8
                     if (matches >= 8) {
+                        //caso haja 8 acertos, chama a função que finaliza o jogo
                         gameOver();
                     }
+                }else{
+                    somErro.play();
                 }
-            }
-
-        } else {
-            console.log(flippedCards);
+                
+            } else {
+                setTimeout(function(){
+            // console.log(flippedCards);
+            //em caso de haver duas cartas viradas (terceiro click)-> delay
             flippedCards[0].childNodes[1].classList.toggle("flipped");
             flippedCards[0].childNodes[3].classList.toggle("flipped");
             flippedCards[1].childNodes[1].classList.toggle("flipped");
             flippedCards[1].childNodes[3].classList.toggle("flipped");
 
             flippedCards = [];
+            },3000);
         }
+    }else{
+        somErro.play();
     }
-    /*   window.setTimeout(function(){
-           gameOver();
-       },1000);
-   */
-
+}
 
     function randomSort(oldArray) {
 

@@ -4,33 +4,40 @@
 }
 
 body {
-    /*background-color: #555;*/
+    background-color: #555;
    /* text-align: center;*/
-    background-color: #F2FFFC;
+    /* background-color: #F2FFFC; */
+     /* background-color: #6CA6CD; */
     font-size: 120%;
     line-height: 1.5;
     display: flex;
     flex-wrap: wrap;
 }
 
+/* container das cartas, testando o distancia */
 #container {
     width: 1325px;
     height: 495px;
     border: 1px solid #111;
     position: relative;
-    margin: 10px auto;
+    /* margin: 10px auto; */
+    margin: 100px auto;
     border-radius: 10px;
-    background-color: #5e4a16;
+    /* cor do fundo do container, que fica debaixo das cartas */
+    background-color: #6CA6CD;
+    /* background-color: #5e4a16; */
+    /* background-color: #F2FFFC; */
 }
 
 .card {
-    width: 160px;
+    width: 160px; 
     height: 240px;
     perspective: 600px;
     position: absolute;
     border-radius: 10px;
 }
 
+/* face das cartas */
 .face {
     border-radius: 10px;
     width: 100%;
@@ -48,6 +55,7 @@ body {
     transform: rotateY(0deg);
 }
 
+/* todas as div´s da face back, vão ter a mesma imagem que é a do verso */
 .back {
     background: url("img/verso.jpg");
 }
@@ -57,7 +65,7 @@ body {
 }
 
 .card:hover {
-    box-shadow: 0 0 10px #aaa;
+    box-shadow: 0 0 50px #aaa;
 }
 
 .face.flipped.match {
