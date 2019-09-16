@@ -1,9 +1,11 @@
 (function () {
 
-     //variável que armazena a referência ao elemento HTML, que irá exibi-la
+    //variável que armazena a referência ao elemento HTML, que irá exibi-la
     var txtScore = document.querySelector('#score');
+
     //variável para armazenar pontuação na memória e será atualizada a cada acerto do jogador
     var score = 0;
+
     //variáveis que controlarar os aúdios
     var somAcerto = document.createElement('audio');
     somAcerto.src = 'somAcerto.mp3';
@@ -26,11 +28,11 @@
     var imgMatchSing = document.querySelector("#imgMatchSing");
 
     //estrutura de atribuição da imagens aos card
-    for (var i = 0; i < 16; i++) {
+    for (var i = 0; i < 24; i++) {
         //cria um objeto img com um src e um id
         var img = {
             src: "img/" + i + ".jpg",
-            id: i % 8
+            id: i % 12
         };
 
         //insere o objeto criado no array
@@ -62,7 +64,7 @@
         var backFaces = document.getElementsByClassName("back");
 
         //posicioanamento das cartas e adição do evento click
-        for (var i = 0; i < 16; i++) {
+        for (var i = 0; i < 24; i++) {
             //limpa as cartas marcadas
             frontFaces[i].classList.remove("flipped", "match");
             backFaces[i].classList.remove("flipped", "match");
@@ -71,7 +73,8 @@
             var card = document.querySelector("#card" + i);
             // console.log(i % 8);
             card.style.left = (i % 8) === 0 ? 5 + "px" : 5 + ((i % 8) * 165) + "px";
-            card.style.top = i / 8 >= 1 ? 250 + "px" : 5 + "px";
+            // card.style.top = i / 8 >= 1 ? 250 + "px" : 5 + "px";
+            card.style.top = i < 8 ? 5 + "px" : (i < 16 ? 250 + "px" : 495 + "px");
 
             //adiciona às cartas o evento click chamando a função que vira as cartas
             card.addEventListener("click", flipCard, false);
@@ -141,13 +144,13 @@
                     //soma um ao contador de acertos
                     matches++;
 
-                     //os seguintes comandos irá somar um ponto ao placar e exibirá na tela a pontuação atualizada
+                    //os seguintes comandos irá somar um ponto ao placar e exibirá na tela a pontuação atualizada
                     score++;
                     txtScore.innerHTML = 'PONTOS: ' + score;
 
-                    //verifica se o contador de acertos chegou a 8
-                    if (matches >= 8) {
-                        //caso haja 8 acertos, chama a função que finaliza o jogo
+                    //verifica se o contador de acertos chegou a 8. OBS: feita uma alteração para 12 acertos
+                    if (matches >= 12) {
+                        //caso haja 12 acertos, chama a função que finaliza o jogo
                         gameOver();
                     }
                 // }estava dando bug aqui nesse fechamento '}' -> Ignorado com sucesso!!!
