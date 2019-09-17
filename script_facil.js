@@ -1,5 +1,16 @@
 (function () {
 
+//     como faço pra deixar ao invés de duas colunas com 8,  fazer 4x4?
+// na linha que determina a distância da carta em relação à margem esquerda você substitui o 8 por 4.
+// E na linha que determina a distância da carta em relação ao topo, você avalia se i é menor que 4,
+//  caso seja você estabelece 5px para a propriedade card.style.top, caso contrário o valor atribuído 
+// à propriedade será o produto da divisão de i por 4 (arredondado para baixo, para ficar um valor inteiro) vezes 250px.
+// Então as linhas 11 e 12 do código ficarão conforme o exemplo abaixo:
+
+// card.style.left = i % 4 === 0 ? 5 + "px" : i % 4 * 165 + 5 + "px";
+// card.style.top = i < 4 ? 5 + "px" : Math.floor(i / 4) * 250 + "px";
+
+
     //variável que armazena a referência ao elemento HTML, que irá exibi-la
    var txtScore = document.querySelector('#score');
    //variável para armazenar pontuação na memória e será atualizada a cada acerto do jogador
@@ -26,11 +37,11 @@
    var imgMatchSing = document.querySelector("#imgMatchSing");
 
    //estrutura de atribuição da imagens aos card
-   for (var i = 0; i < 16; i++) {
+   for (var i = 0; i < 8; i++) {
        //cria um objeto img com um src e um id
-       var img = {
-           src: "img/" + i + ".jpg",
-           id: i % 8
+       var img3 = {
+           src: "img3/" + i + ".jpg",
+           id: i % 4
        };
 
        //insere o objeto criado no array
@@ -61,8 +72,8 @@
        var frontFaces = document.getElementsByClassName("front");
        var backFaces = document.getElementsByClassName("back");
 
-       //posicioanamento das cartas e adição do evento click
-       for (var i = 0; i < 16; i++) {
+       //posicionamento das cartas e adição do evento click
+       for (var i = 0; i < 4; i++) {
            //limpa as cartas marcadas
            frontFaces[i].classList.remove("flipped", "match");
            backFaces[i].classList.remove("flipped", "match");
@@ -70,8 +81,9 @@
            //posiciona as imagens no tabuleiro
            var card = document.querySelector("#card" + i);
            // console.log(i % 8);
-           card.style.left = (i % 8) === 0 ? 5 + "px" : 5 + ((i % 8) * 165) + "px";
-           card.style.top = i / 8 >= 1 ? 250 + "px" : 5 + "px";
+           card.style.left = (i % 4) === 0 ? 5 + "px" : 5 + ((i % 4) * 165) + "px";
+        //    card.style.top = i / 4 >= 1 ? 250 + "px" : 5 + "px";
+           card.style.top = i < 4 ? 5 + "px" : Math.floor(i / 4) * 250 + "px";
 
            //adiciona às cartas o evento click chamando a função que vira as cartas
            card.addEventListener("click", flipCard, false);
