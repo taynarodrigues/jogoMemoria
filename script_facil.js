@@ -1,244 +1,230 @@
-(function () {
-
-//     como faço pra deixar ao invés de duas colunas com 8,  fazer 4x4?
-// na linha que determina a distância da carta em relação à margem esquerda você substitui o 8 por 4.
-// E na linha que determina a distância da carta em relação ao topo, você avalia se i é menor que 4,
-//  caso seja você estabelece 5px para a propriedade card.style.top, caso contrário o valor atribuído 
-// à propriedade será o produto da divisão de i por 4 (arredondado para baixo, para ficar um valor inteiro) vezes 250px.
-// Então as linhas 11 e 12 do código ficarão conforme o exemplo abaixo:
-
-// card.style.left = i % 4 === 0 ? 5 + "px" : i % 4 * 165 + 5 + "px";
-// card.style.top = i < 4 ? 5 + "px" : Math.floor(i / 4) * 250 + "px";
-
+(function() {
 
     //variável que armazena a referência ao elemento HTML, que irá exibi-la
-   var txtScore = document.querySelector('#score');
-   //variável para armazenar pontuação na memória e será atualizada a cada acerto do jogador
-   var score = 0;
-   //variáveis que controlarar os aúdios
-   var somAcerto = document.createElement('audio');
-   somAcerto.src = 'somAcerto.mp3';
-   var somErro = document.createElement('audio');
-   somErro.src = 'somErro.mp3';
+    var txtScore = document.querySelector('#score');
+    //variável para armazenar pontuação na memória e será atualizada a cada acerto do jogador
+    var score = 0;
+    //variáveis que controlarar os aúdios
+    var somAcerto = document.createElement('audio');
+    somAcerto.src = 'somAcerto.mp3';
+    var somErro = document.createElement('audio');
+    somErro.src = 'somErro.mp3';
 
-   //array que armazenará os objestos com src i id de 1 a 8
-   var imagens = [];
+    //array que armazenará os objestos com src i id de 1 a 8
+    var imagens = [];
 
-   //array que armazena as cartas viradas
-   var flippedCards = [];
+    //array que armazena as cartas viradas
+    var flippedCards = [];
 
-   //variável contadora de acertos. ao chegar em 8 o jogo termina
-   var matches = 0;
+    //variável contadora de acertos. ao chegar em 8 o jogo termina
+    var matches = 0;
 
-   //imagem do fim do jogo
-   var modalGameOver = document.querySelector("#modalGameOver");
+    //imagem do fim do jogo
+    var modalGameOver = document.querySelector("#modalGameOver");
 
-   //imagem a ser exibida em caso de acerto
-   var imgMatchSing = document.querySelector("#imgMatchSing");
+    //imagem a ser exibida em caso de acerto
+    var imgMatchSing = document.querySelector("#imgMatchSing");
 
-   //estrutura de atribuição da imagens aos card
-   for (var i = 0; i < 8; i++) {
-       //cria um objeto img com um src e um id
-       var img3 = {
-           src: "img3/" + i + ".jpg",
-           id: i % 4
-       };
+    //estrutura de atribuição da imagens aos card-mechendo aqui
+    for (var i = 0; i < 10; i++) {
+        //cria um objeto img com um src e um id
+        var img3 = {
+            src: "img3/" + i + ".jpg",
+            id: i % 5
+        };
 
-       //insere o objeto criado no array
-       imagens.push(img);
-   }
-   // console.log(imagens);
+        //insere o objeto criado no array
+        imagens.push(img3);
+    }
+    console.log(imagens);
 
-   //chama a função de inicialização do jogo
-   startGame();
+    //chama a função de inicialização do jogo
+    startGame();
 
-   //os seguintes comandos fará com que o placar seja zerado e exibido sempre que iniciarmos uma partida
-   score = 0;
-   txtScore.innerHTML = 'PONTOS: ' + score;
+    //os seguintes comandos fará com que o placar seja zerado e exibido sempre que iniciarmos uma partida
+    score = 0;
+    txtScore.innerHTML = 'PONTOS: ' + score;
 
-   //função de inicialização do jogo
-   function startGame() {
+    //função de inicialização do jogo
+    function startGame() {
 
-       //zera o array de cartas viradas
-       flippedCards = [];
+        //zera o array de cartas viradas
+        flippedCards = [];
 
-       //zera o contador de acertos
-       matches = 0;
+        //zera o contador de acertos
+        matches = 0;
 
-       //embaralhamento do array de imagens
-       imagens = randomSort(imagens); 
+        //embaralhamento do array de imagens
+        imagens = randomSort(imagens);
 
-       //lista de elementos div com as classes back r front
-       var frontFaces = document.getElementsByClassName("front");
-       var backFaces = document.getElementsByClassName("back");
+        //lista de elementos div com as classes back r front
+        var frontFaces = document.getElementsByClassName("front");
+        var backFaces = document.getElementsByClassName("back");
 
-       //posicionamento das cartas e adição do evento click
-       for (var i = 0; i < 4; i++) {
-           //limpa as cartas marcadas
-           frontFaces[i].classList.remove("flipped", "match");
-           backFaces[i].classList.remove("flipped", "match");
+        //posicionamento das IMAGENS e adição do evento click -> IMAGENS NA LINHA 2 X 5 = 10
+        for (var i = 0; i < 10; i++) {
+            //limpa as cartas marcadas
+            frontFaces[i].classList.remove("flipped", "match");
+            backFaces[i].classList.remove("flipped", "match");
 
-           //posiciona as imagens no tabuleiro
-           var card = document.querySelector("#card" + i);
-           // console.log(i % 8);
-           card.style.left = (i % 4) === 0 ? 5 + "px" : 5 + ((i % 4) * 165) + "px";
-        //    card.style.top = i / 4 >= 1 ? 250 + "px" : 5 + "px";
-           card.style.top = i < 4 ? 5 + "px" : Math.floor(i / 4) * 250 + "px";
+            //posiciona as imagens no tabuleiro COLUNA
+            var card = document.querySelector("#card" + i);
+            console.log(i % 5);
+            card.style.left = (i % 5) === 0 ? 5 + "px" : 5 + ((i % 5) * 165) + "px";
+            card.style.top = i / 5 >= 1 ? 250 + "px" : 5 + "px";
+            card.addEventListener("click", flipCard, false);
 
-           //adiciona às cartas o evento click chamando a função que vira as cartas
-           card.addEventListener("click", flipCard, false);
+            //adiciona as imagens às cartas
+            frontFaces[i].style.background = "url('" + imagens[i].src + "')";
+            frontFaces[i].setAttribute("id", imagens[i].id);
+            // console.log(frontFaces[i].id);
+        }
 
-           //adiciona as imagens às cartas
-           frontFaces[i].style.background = "url('" + imagens[i].src + "')";
-           frontFaces[i].setAttribute("id", imagens[i].id);
-           // console.log(frontFaces[i].id);
-       }
+        //joga a imagem de game over para o plano de fundo
+        modalGameOver.style.zIndex = -2;
 
-       //joga a imagem de game over para o plano de fundo
-       modalGameOver.style.zIndex = -2;
+        //remove o evento click da imagem de game over
+        modalGameOver.removeEventListener("click", function() {
+            startGame();
+        }, false);
+    } //fim da função de inicialização do jogo
 
-       //remove o evento click da imagem de game over
-       modalGameOver.removeEventListener("click", function(){
-           startGame();
-       }, false);
-   }//fim da função de inicialização do jogo
+    //função que vira as cartas
+    function flipCard() {
+        //verifica se o número de cartas viradas é menor que 2
+        if (flippedCards.length < 2) {
+            //pega as faces da carta clicada
+            var faces = this.getElementsByClassName("face");
 
-   //função que vira as cartas
-   function flipCard() {
-       //verifica se o número de cartas viradas é menor que 2
-       if (flippedCards.length < 2) {
-           //pega as faces da carta clicada
-           var faces = this.getElementsByClassName("face");
+            // console.log(faces[0].classList.length);
 
-           // console.log(faces[0].classList.length);
+            //confere se a carta já está virada, impedindo que a mesma carta seja virada duas vezes
+            if (faces[0].classList[2]) {
+                return;
+            }
 
-           //confere se a carta já está virada, impedindo que a mesma carta seja virada duas vezes
-           if (faces[0].classList[2]) {
-               return;
-           }
+            /*console.log(faces[0]);*/
 
-           /*console.log(faces[0]);*/
+            //adiciona a classe fliped às faces da carta para que sejam virada
+            faces[0].classList.toggle("flipped");
+            faces[1].classList.toggle("flipped");
 
-           //adiciona a classe fliped às faces da carta para que sejam virada
-           faces[0].classList.toggle("flipped");
-           faces[1].classList.toggle("flipped");
 
-           
-           /*console.log(faces[0].classList);*/
+            /*console.log(faces[0].classList);*/
 
-           //adiciona a carta ao array de cartas viradas
-           flippedCards.push(this);
+            //adiciona a carta ao array de cartas viradas
+            flippedCards.push(this);
 
-           //verifica se o número de cartas no array de cartas virada é igual a 2
-           if (flippedCards.length === 2) {
+            //verifica se o número de cartas no array de cartas virada é igual a 2
+            if (flippedCards.length === 2) {
 
-               //compara o id das imagens viradas para ver se houve um acerto
-               if (flippedCards[0].childNodes[3].id === flippedCards[1].childNodes[3].id) {
+                //compara o id das imagens viradas para ver se houve um acerto
+                if (flippedCards[0].childNodes[3].id === flippedCards[1].childNodes[3].id) {
 
-                   //o som será executado quando o jogador acertar uma combinação
+                    //o som será executado quando o jogador acertar uma combinação
                     somAcerto.play();
 
-                   //em caso de acerto adiciona a classe match a todas as faces das duas cartas presente no array de cartas viradas
-                   flippedCards[0].childNodes[1].classList.toggle("match");
-                   flippedCards[0].childNodes[3].classList.toggle("match");
-                   flippedCards[1].childNodes[1].classList.toggle("match");
-                   flippedCards[1].childNodes[3].classList.toggle("match");
+                    //em caso de acerto adiciona a classe match a todas as faces das duas cartas presente no array de cartas viradas
+                    flippedCards[0].childNodes[1].classList.toggle("match");
+                    flippedCards[0].childNodes[3].classList.toggle("match");
+                    flippedCards[1].childNodes[1].classList.toggle("match");
+                    flippedCards[1].childNodes[3].classList.toggle("match");
 
-                   //chama a função que exibe a mensagem MATCH
-                   matchCardSing();
+                    //chama a função que exibe a mensagem MATCH
+                    matchCardSing();
 
-                   //limpa o array das imagens  viradas
-                   flippedCards = [];
+                    //limpa o array das imagens  viradas
+                    flippedCards = [];
 
-                   //soma um ao contador de acertos
-                   matches++;
+                    //soma um ao contador de acertos
+                    matches++;
 
                     //os seguintes comandos irá somar um ponto ao placar e exibirá na tela a pontuação atualizada
-                   score++;
-                   txtScore.innerHTML = 'PONTOS:' + score;
+                    score++;
+                    txtScore.innerHTML = 'PONTOS:' + score;
 
-                   //verifica se o contador de acertos chegou a 8
-                   if (matches >= 8) {
-                       //caso haja 8 acertos, chama a função que finaliza o jogo
-                       gameOver();
-                   }
-               // }estava dando bug aqui nesse fechamento '}' -> Ignorado com sucesso!!!
-           }else{
-               //caso não acerte a combinação, o som de erro será executado
-               somErro.play();
-           }
-       }       
+                    //verifica se o contador de acertos chegou a 8
+                    if (matches >= 8) {
+                        //caso haja 8 acertos, chama a função que finaliza o jogo
+                        gameOver();
+                    }
+                    // }estava dando bug aqui nesse fechamento '}' -> Ignorado com sucesso!!!
+                } else {
+                    //caso não acerte a combinação, o som de erro será executado
+                    somErro.play();
+                }
+            }
         } else {
-           // console.log(flippedCards);
+            // console.log(flippedCards);
 
-           //em caso de haver duas cartas viradas (terceiro click)-> delay
-           flippedCards[0].childNodes[1].classList.toggle("flipped");
-           flippedCards[0].childNodes[3].classList.toggle("flipped");
-           flippedCards[1].childNodes[1].classList.toggle("flipped");
-           flippedCards[1].childNodes[3].classList.toggle("flipped");
-           
-           //limpa o array de cartas viradas
-           flippedCards = [];
-       }
-   }
-   
+            //em caso de haver duas cartas viradas (terceiro click)-> delay
+            flippedCards[0].childNodes[1].classList.toggle("flipped");
+            flippedCards[0].childNodes[3].classList.toggle("flipped");
+            flippedCards[1].childNodes[1].classList.toggle("flipped");
+            flippedCards[1].childNodes[3].classList.toggle("flipped");
 
-   //função que embaralha as imagens recebendo um array de cartas por parâmetro
-   function randomSort(oldArray) {
-       //cria um array vazio
-       var newArray = [];
-
-       //executa a estrutura enquanto o novo array não atingir o mesmo múmero de elementos de array passado por parâmetro
-       while (newArray.length != oldArray.length) {
-           //cria uma variável i recebendo um número aleatório entre 0 e o número de elementos no array -1
-           var i = Math.floor(Math.random() * oldArray.length);
-
-           //verifica se o elemnto indicado pelo índice i já existe no array novo
-           if (newArray.indexOf(oldArray[i]) < 0) {
-               //caso não exista é inserido
-               newArray.push(oldArray[i]);
-           }
-       }
-
-       //retorna o array novo, que possui os elementos do array passado por parâmetros embaralhados
-       return newArray;
-   }//fim da função que embaralhas as imagens
+            //limpa o array de cartas viradas
+            flippedCards = [];
+        }
+    }
 
 
-   //função que gera o sinal de MATCH
-   function matchCardSing() {
-       //joga a mensagem de MATCH para o primeiro plano
-       imgMatchSing.style.zIndex = "1";
+    //função que embaralha as imagens recebendo um array de cartas por parâmetro
+    function randomSort(oldArray) {
+        //cria um array vazio
+        var newArray = [];
 
-       //move a mensagem para cima
-       imgMatchSing.style.top = 150 + "px";
+        //executa a estrutura enquanto o novo array não atingir o mesmo múmero de elementos de array passado por parâmetro
+        while (newArray.length != oldArray.length) {
+            //cria uma variável i recebendo um número aleatório entre 0 e o número de elementos no array -1
+            var i = Math.floor(Math.random() * oldArray.length);
 
-       //deixa a mensagem transparente
-       imgMatchSing.style.opacity = "0";
+            //verifica se o elemnto indicado pelo índice i já existe no array novo
+            if (newArray.indexOf(oldArray[i]) < 0) {
+                //caso não exista é inserido
+                newArray.push(oldArray[i]);
+            }
+        }
 
-       //função executada após 1.5 segundo
-       setTimeout(function () {
-           //joga a mensagem de MATCH para o plano de fundo
-           imgMatchSing.style.zIndex = "-1";
+        //retorna o array novo, que possui os elementos do array passado por parâmetros embaralhados
+        return newArray;
+    } //fim da função que embaralhas as imagens
 
-           //move a mensagem para o centro da tela
-           imgMatchSing.style.top = 250 + "px";
 
-           //remove a transparência da mensagem
-           imgMatchSing.style.opacity = "1";
-       }, 1500);
-   }//fim da função que exibe a mensagem de MATCH
+    //função que gera o sinal de MATCH
+    function matchCardSing() {
+        //joga a mensagem de MATCH para o primeiro plano
+        imgMatchSing.style.zIndex = "1";
 
-   //função do fim do jogo
-   function gameOver() {
-       //joga a menagem de fim do jogo para o plano da frente
-       modalGameOver.style.zIndex = "99";
+        //move a mensagem para cima
+        imgMatchSing.style.top = 150 + "px";
 
-       //adiciona o evento click à imagem de game over
-       modalGameOver.addEventListener('click', function () {
-           //chama a função que reinicia o jogo
-           startGame();
-       }, false);
-   }
+        //deixa a mensagem transparente
+        imgMatchSing.style.opacity = "0";
+
+        //função executada após 1.5 segundo
+        setTimeout(function() {
+            //joga a mensagem de MATCH para o plano de fundo
+            imgMatchSing.style.zIndex = "-1";
+
+            //move a mensagem para o centro da tela
+            imgMatchSing.style.top = 250 + "px";
+
+            //remove a transparência da mensagem
+            imgMatchSing.style.opacity = "1";
+        }, 1500);
+    } //fim da função que exibe a mensagem de MATCH
+
+    //função do fim do jogo
+    function gameOver() {
+        //joga a menagem de fim do jogo para o plano da frente
+        modalGameOver.style.zIndex = "99";
+
+        //adiciona o evento click à imagem de game over
+        modalGameOver.addEventListener('click', function() {
+            //chama a função que reinicia o jogo
+            startGame();
+        }, false);
+    }
 
 }());
