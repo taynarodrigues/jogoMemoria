@@ -62,7 +62,7 @@ body {
 
 /* todas as div´s da face back, vão ter a mesma imagem que é a do verso */
 .back {
-    background: url("img/verso.jpg");
+    background: url("../img/img_medio/verso.jpg");
 }
 
 .flipped.back {

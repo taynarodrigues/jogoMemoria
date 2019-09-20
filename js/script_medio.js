@@ -6,9 +6,9 @@
    var score = 0;
    //variáveis que controlarar os aúdios
    var somAcerto = document.createElement('audio');
-   somAcerto.src = 'somAcerto.mp3';
+   somAcerto.src = '../audio/somAcerto.mp3';
    var somErro = document.createElement('audio');
-   somErro.src = 'somErro.mp3';
+   somErro.src = '../audio/somErro.mp3';
 
    //array que armazenará os objestos com src i id de 1 a 8
    var imagens = [];
@@ -28,13 +28,13 @@
    //estrutura de atribuição da imagens aos card
    for (var i = 0; i < 16; i++) {
        //cria um objeto img com um src e um id
-       var img = {
-           src: "img/" + i + ".jpg",
+       var img_medio = {
+           src: "../img/img_medio/" + i + ".jpg",
            id: i % 8
        };
 
        //insere o objeto criado no array
-       imagens.push(img);
+       imagens.push(img_medio);
    }
    // console.log(imagens);
 
