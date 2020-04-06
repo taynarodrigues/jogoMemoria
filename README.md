@@ -2,7 +2,7 @@ joguinho da memória
 ===================
 
 
-![Print][1]
+![MEMOD](./eu.png)
 
 
 [1]:https://taynarodrigues.github.io/jogoMemoria/home.html
