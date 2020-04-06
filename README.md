@@ -2,7 +2,7 @@ Developing Memory Game
 ===================
 
 
-![MEMOD](../../eu.png)
+![MEMOD](./img/eu.png)
 
 
 [1]:https://taynarodrigues.github.io/jogoMemoria/home.html
